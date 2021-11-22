@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model')
 const Events = require('../models/Event');
+const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 
@@ -15,7 +16,7 @@ router.get('/events', (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.get('/events/add', (req, res, next) => {
+router.get('/events/add',isLoggedIn, (req, res, next) => {
     res.render('events/addEvent')
 })
 
