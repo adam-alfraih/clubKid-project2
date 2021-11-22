@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model')
 const Events = require('../models/Event');
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 
 router.get('/events', (req, res, next) => {
     Events.find()
@@ -17,10 +19,17 @@ router.get('/events/add', (req, res, next) => {
     res.render('events/addEvent')
 })
 
-router.post('/events/add', (req, res, next) => {
-    console.log(req.body)
+router.post('/events/add', isLoggedIn, (req, res, next) => {
+    //console.log(req.body)
+    //const id = req.params
+    //console.log(id)
     //res.send(req.body)
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
+    if(zipcode.length!==5){
+        res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
+        return
+    }
+   console.log(req.user) 
     Events.create({
         title: title,
         date: date,
@@ -34,32 +43,21 @@ router.post('/events/add', (req, res, next) => {
         indoors: indoors,
         cost: cost,
         minAge: minAge,
-        artists: artists
+        artists: artists,
+        creator: req.user._id
     })
-    .then(createdCel => {
-        res.redirect('add')
+    .then(createdEvent => {    
+        res.redirect(`/event/${createdEvent._id}`)   
     })
 })
-// router.post('/events', (req, res, next) => {
-// 	// create the book using the values from the request body	
-// 	// console.log(req.body)
-// 	// const title = req.body.title
-// 	const { title, description, author, rating } = req.body
-// 	// console.log(title, description, author, rating)
 
-// 	// create a new book
-// 	Book.create({
-// 		title: title,
-// 		description: description,
-// 		rating: rating,
-// 		author: author
-// 	})
-// 		.then(createdBook => {
-// 			console.log(createdBook)
-// 			// show the book details for the created book
-// 			// res.render('books/details', { book: createdBook })
-// 			res.redirect(`/books/${createdBook._id}`)
-// 		})
-// });
+router.get('/event/:id', (req, res, next) => {
+	const id = req.params.id
+	Events.findById(id).populate('creator')
+		.then(eventsFromDB => {
+			res.render('events/eventDetails', { events: eventsFromDB })
+		})
+		.catch(err => next(err))
+});
 
 module.exports = router
