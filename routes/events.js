@@ -20,10 +20,17 @@ router.get('/events/add',isLoggedIn, (req, res, next) => {
     res.render('events/addEvent')
 })
 
-router.post('/events/add', (req, res, next) => {
-    console.log(req.body)
+router.post('/events/add', isLoggedIn, (req, res, next) => {
+    //console.log(req.body)
+    //const id = req.params
+    //console.log(id)
     //res.send(req.body)
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
+    if(zipcode.length!==5){
+        res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
+        return
+    }
+   console.log(req.user) 
     Events.create({
         title: title,
         date: date,
@@ -37,22 +44,21 @@ router.post('/events/add', (req, res, next) => {
         indoors: indoors,
         cost: cost,
         minAge: minAge,
-        artists: artists
+        artists: artists,
+        creator: req.user._id
     })
-    .then(createdCel => {
-        res.redirect('add')
+    .then(createdEvent => {    
+        res.redirect(`/event/${createdEvent._id}`)   
     })
 })
 
-
 router.get('/event/:id', (req, res, next) => {
 	const id = req.params.id
-	Events.findById(id)
+	Events.findById(id).populate('creator')
 		.then(eventsFromDB => {
 			res.render('events/eventDetails', { events: eventsFromDB })
 		})
 		.catch(err => next(err))
 });
-
 
 module.exports = router
