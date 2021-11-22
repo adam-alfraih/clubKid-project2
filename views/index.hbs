@@ -1,17 +1,23 @@
 <h1>{{title}} 🚀</h1>
-
+{{#if user}}
 <nav>
-
-<a href="/signup"> Sign up </a>
-<br> 
-<a href="/login">Log in </a>
-<br> 
 <a href="/logout">Log Out </a>
-<br> 
+<br />
 <a href="/events/add"> Add new events</a>
-<br> 
+<br />
 <a href="/events">View events </a>
-<br> 
- 
+<br />
+
+{{else}}
+<nav>
+    <a href="/signup"> Sign up </a>
+    <br />
+    <a href="/login">Log in </a>
+    <br />
+    <a href="/events/add"> Add new events</a>
+    <br />
+    <a href="/events">View events </a>
+    <br />
 </nav>
+{{/if}}
 <p>Welcome Ironhacker!</p>
