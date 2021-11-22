@@ -16,20 +16,18 @@ const events = [
         address: {
             street: 'Skalitzer Str 100',
             city: 'Berlin',
-            zipcode: '1234567'
+            zipcode: '38333'
         }, 
-		artists: "Example Artist"
+		artists: "DVS1",
 		// creator: {{id}}
+        indoors: 'outside',
+        cost: '15',
+        minAge: '18'
+
+
 	}
 ];
 
-
-// books.forEach(book => {
-// 	Author.create(book.author)
-// 	.then(createdBook => {
-// 		book.author = createdBook._id
-//         Book.create(book)
-// 	})
 
 events.forEach(event => {
     Event.create(event)

@@ -4,7 +4,7 @@ const User = require('./User.model');
 
 const eventSchema = new Schema({
     title: String,
-    date: Date,
+    date: String,
     genre: String,
 
     address: {
