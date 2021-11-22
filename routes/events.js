@@ -40,26 +40,16 @@ router.post('/events/add', (req, res, next) => {
         res.redirect('add')
     })
 })
-// router.post('/events', (req, res, next) => {
-// 	// create the book using the values from the request body	
-// 	// console.log(req.body)
-// 	// const title = req.body.title
-// 	const { title, description, author, rating } = req.body
-// 	// console.log(title, description, author, rating)
 
-// 	// create a new book
-// 	Book.create({
-// 		title: title,
-// 		description: description,
-// 		rating: rating,
-// 		author: author
-// 	})
-// 		.then(createdBook => {
-// 			console.log(createdBook)
-// 			// show the book details for the created book
-// 			// res.render('books/details', { book: createdBook })
-// 			res.redirect(`/books/${createdBook._id}`)
-// 		})
-// });
+
+router.get('/event/:id', (req, res, next) => {
+	const id = req.params.id
+	Events.findById(id)
+		.then(eventsFromDB => {
+			res.render('events/eventDetails', { events: eventsFromDB })
+		})
+		.catch(err => next(err))
+});
+
 
 module.exports = router
