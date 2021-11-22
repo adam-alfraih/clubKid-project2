@@ -10,3 +10,15 @@ a {
 h1 {
   color: 15px;
 }
+
+#add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  /* padding: 20px 10px 20px 10px; */
+  margin: 0 0 20px 0;
+}
