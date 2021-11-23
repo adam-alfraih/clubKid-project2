@@ -7,6 +7,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 
 router.get('/events', (req, res, next) => {
+    console.log(req.user)
     Events.find()
     .then(eventsFromDB => {
         console.log(eventsFromDB)
@@ -21,6 +22,7 @@ router.get('/events/add',isLoggedIn, (req, res, next) => {
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
+    console.log(req.user)
     //console.log(req.body)
     //const id = req.params
     //console.log(id)
