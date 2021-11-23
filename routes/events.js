@@ -30,7 +30,21 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
         res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
         return
     }
-   console.log(req.user) 
+    if(title.length===0){
+        console.log('date ======' + date.length)
+        res.render('events/addEvent', { message: 'Please provide a Title for your event' });
+        return
+    }
+    if(date.length===0){
+        res.render('events/addEvent', { message: 'Please choose a date' });
+        return
+    }
+        // var now = new Date()
+        // var month = now.getMonth()+1
+        // var year = now.getFullYear()
+        // var day = now.getDay()
+        // console.log(date)
+        // console.log(now)
     Events.create({
         title: title,
         date: date,
