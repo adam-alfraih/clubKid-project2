@@ -81,6 +81,9 @@ router.post('/signup', (req, res, next) => {
 
 
 
+
+
+
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("login");
 });
@@ -119,7 +122,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
             .status(400)
             .render("login", { errorMessage: "Wrong credentials." });
         }
-        req.session.user = user;
+        // req.session.user = user;
+        req.login()
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
       });
