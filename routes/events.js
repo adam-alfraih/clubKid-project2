@@ -52,6 +52,21 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
     })
 })
 
+router.get('/myevents', isLoggedIn, (req, res, next) => {
+
+	Events.find({
+        creator: req.session.user
+    }).populate('creator')
+		.then(eventsFromDB => {
+			res.render('events/viewEvents.hbs', { events: eventsFromDB })
+		})
+        
+		.catch(err => next(err))
+});
+
+
+
+
 router.get('/event/:id', (req, res, next) => {
 	const id = req.params.id
 	Events.findById(id).populate('creator')
