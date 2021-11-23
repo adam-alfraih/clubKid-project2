@@ -4,6 +4,7 @@ const User = require('../models/User.model')
 const Events = require('../models/Event');
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const userEditAccess = require("../middleware/userEditAccess");
 
 
 router.get('/events', (req, res, next) => {
@@ -26,7 +27,7 @@ router.get('/events', (req, res, next) => {
             //    } 
             // })
         //   })
-        console.log(eventsFromDB)
+        //console.log(eventsFromDB)
         // render the view
         res.render('events/index.hbs', { eventList: eventsFromDB })
     })
@@ -38,7 +39,7 @@ router.get('/events/add',isLoggedIn, (req, res, next) => {
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
-    console.log(req.user)
+  //  console.log(req.user)
     //console.log(req.body)
     //const id = req.params
     //console.log(id)
@@ -49,7 +50,7 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
         return
     }
     if(title.length===0){
-        console.log('date ======' + date.length)
+       // console.log('date ======' + date.length)
         res.render('events/addEvent', { message: 'Please provide a Title for your event' });
         return
     }
@@ -85,7 +86,7 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
 })
 
 router.get('/myevents', isLoggedIn, (req, res, next) => {
-
+   //s console.log(reqs)
 	Events.find({
         creator: req.user
     }).populate('creator')
@@ -98,17 +99,30 @@ router.get('/myevents', isLoggedIn, (req, res, next) => {
 
 
 
-
 router.get('/event/:id', (req, res, next) => {
 	const id = req.params.id
+    const loggedInUserName = req.user
+    let identification = false
 	Events.findById(id).populate('creator')
 		.then(eventsFromDB => {
-			res.render('events/eventDetails', { events: eventsFromDB })
+            if(req.user){
+                if(loggedInUserName.username===eventsFromDB.creator.username){
+                    identification = true
+                }
+            }
+           
+            
+			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification })
 		})
 		.catch(err => next(err))
 });
 
+router.get('/event/delete/:id',userEditAccess, (req,res,next) => {
+	const id = req.params.id
+    Events.findByIdAndDelete(id)
+	.then(() => {
+		res.redirect('/events')
+	})
+	.catch(err => next(err))
+})
 module.exports = router
-
-
-
