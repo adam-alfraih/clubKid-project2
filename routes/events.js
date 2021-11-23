@@ -71,7 +71,7 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
 router.get('/myevents', isLoggedIn, (req, res, next) => {
 
 	Events.find({
-        creator: req.session.user
+        creator: req.user
     }).populate('creator')
 		.then(eventsFromDB => {
 			res.render('events/viewEvents.hbs', { events: eventsFromDB })
