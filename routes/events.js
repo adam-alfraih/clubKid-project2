@@ -11,7 +11,23 @@ router.get('/events', (req, res, next) => {
     console.log(req.user)
     Events.find()
     .then(eventsFromDB => {
-      //  console.log(eventsFromDB)
+        eventsFromDB
+        .sort(function(a, b) {
+            var keyA = new Date(a.date),
+              keyB = new Date(b.date);
+            // Compare the 2 dates
+            if (keyA < keyB) return -1;
+            if (keyA > keyB) return 1;
+            return 0;
+          })
+            // .map(event => {
+            //    return {
+            //        ...event,
+            //        date: event.date.slice(0,10)
+            //    } 
+            // })
+        //   })
+        //console.log(eventsFromDB)
         // render the view
         res.render('events/index.hbs', { eventList: eventsFromDB })
     })
