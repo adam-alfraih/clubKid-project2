@@ -125,4 +125,14 @@ router.get('/event/delete/:id',userEditAccess, (req,res,next) => {
 	})
 	.catch(err => next(err))
 })
+
+router.post('/event/search', (req, res, next) => {
+    const searchItem = req.body.search
+    //Events.find(searchItem)
+    
+    Events.find({$text: {$search: searchItem.toLowerCase()}})
+    .then(findedEvents => {
+        res.render('events/viewEvents.hbs', { events: findedEvents ,user: req.user})
+    })
+})
 module.exports = router
