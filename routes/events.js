@@ -29,13 +29,13 @@ router.get('/events', (req, res, next) => {
         //   })
         //console.log(eventsFromDB)
         // render the view
-        res.render('events/index.hbs', { eventList: eventsFromDB })
+        res.render('events/index.hbs', { eventList: eventsFromDB, user: req.user })
     })
     .catch(err => next(err))
 })
 
 router.get('/events/add',isLoggedIn, (req, res, next) => {
-    res.render('events/addEvent')
+    res.render('events/addEvent', {user: req.user})
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
@@ -46,16 +46,16 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
     //res.send(req.body)
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
     if(zipcode.length!==5){
-        res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
+        res.render('events/addEvent', { message: 'Please provide a valid zipcode',user: req.user });
         return
     }
     if(title.length===0){
        // console.log('date ======' + date.length)
-        res.render('events/addEvent', { message: 'Please provide a Title for your event' });
+        res.render('events/addEvent', { message: 'Please provide a Title for your event',user: req.user });
         return
     }
     if(date.length===0){
-        res.render('events/addEvent', { message: 'Please choose a date' });
+        res.render('events/addEvent', { message: 'Please choose a date',user: req.user});
         return
     }
         // var now = new Date()
@@ -91,7 +91,7 @@ router.get('/myevents', isLoggedIn, (req, res, next) => {
         creator: req.user
     }).populate('creator')
 		.then(eventsFromDB => {
-			res.render('events/viewEvents.hbs', { events: eventsFromDB })
+			res.render('events/viewEvents.hbs', { events: eventsFromDB ,user: req.user})
 		})
         
 		.catch(err => next(err))
@@ -112,7 +112,7 @@ router.get('/event/:id', (req, res, next) => {
             }
            
             
-			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification })
+			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification ,user: req.user})
 		})
 		.catch(err => next(err))
 });
