@@ -39,8 +39,9 @@ router.get('/events', (req, res, next) => {
 
 
         //   })
-        console.log(eventsFromDB)
-    
+           console.log(eventsFromDB)
+            // var newDate = eventsFromDB.date.toDateString()
+            // console.log(newDate)
         res.render('events/index.hbs', { eventList: eventsFromDB, user: req.user})
     })
     .catch(err => next(err))
@@ -74,11 +75,7 @@ router.get('/events/add',isLoggedIn, (req, res, next) => {
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
-  //  console.log(req.user)
-    //console.log(req.body)
-    //const id = req.params
-    //console.log(id)
-    //res.send(req.body)
+  
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
     console.log(date)
     if(zipcode.length!==5){
@@ -94,15 +91,17 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
         res.render('events/addEvent', { message: 'Please choose a date',user: req.user });
         return
     }
-        // var now = new Date()
-        // var month = now.getMonth()+1
-        // var year = now.getFullYear()
-        // var day = now.getDay()
-        // console.log(date)
-        // console.log(now)
+    const newdate = new Date(date)
+    var newD = newdate.toDateString()
+    
+   //NEW ENTRYYYY
+
+   //END OF NEW ENTRY
+
     Events.create({
         title: title,
         date: date,
+        dateString: newD,
         genre: genre,
         address: {
             street: street,
@@ -159,9 +158,10 @@ router.get('/event/edit/:id', userEditAccess,(req, res, next) => {
 
 	Events.findById(id)
 		.then(eventsFromDB => {
-			console.log(eventsFromDB)
-		
-			res.render('events/editForm', { events: eventsFromDB })
+			console.log(eventsFromDB.date)
+            var newDate = eventsFromDB.date.getFullYear() + '-' + (eventsFromDB.date.getMonth()+1) + '-' + eventsFromDB.date.getDate()
+            console.log('the new date ' +newDate)
+			res.render('events/editForm', { events: eventsFromDB, newDate: newDate, user: req.user})
 		})
 		.catch(err => next(err))
 });
@@ -170,10 +170,12 @@ router.post('/event/edit/:id', userEditAccess,(req, res, next) => {
 	const id = req.params.id
 	// retrieve the values from the request body
 	const { title, date ,genre, street, city, zipcode, about, artists } = req.body
-	
+	const newdate = new Date(date)
+    var newD = newdate.toDateString()
 	Events.findByIdAndUpdate(id, {
 		title,
 		date,
+        dateString: newD,
 		genre,
 		street,
         city,

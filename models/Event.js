@@ -5,6 +5,7 @@ const User = require('./User.model');
 const eventSchema = new Schema({
     title: String,
     date: Date,
+    dateString: String,
     genre: String,
 
     address: {
@@ -12,6 +13,8 @@ const eventSchema = new Schema({
         city: String,
         zipcode: String
     }, 
+    latitude: Number,
+    longitude: Number,
 
     about: String,
     indoors: String,
