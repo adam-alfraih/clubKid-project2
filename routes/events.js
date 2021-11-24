@@ -70,7 +70,7 @@ router.post('/events/find', (req, res, next) => {
 
 
 router.get('/events/add',isLoggedIn, (req, res, next) => {
-    res.render('events/addEvent')
+    res.render('events/addEvent', {user: req.user})
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
