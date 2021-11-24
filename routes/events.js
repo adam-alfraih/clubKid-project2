@@ -41,7 +41,7 @@ router.get('/events', (req, res, next) => {
         //   })
         console.log(eventsFromDB)
     
-        res.render('events/index.hbs', { eventList: eventsFromDB })
+        res.render('events/index.hbs', { eventList: eventsFromDB, user: req.user})
     })
     .catch(err => next(err))
 })
@@ -52,12 +52,16 @@ router.get('/events', (req, res, next) => {
 // /events |THIS IS FOR THE DATE RANGE FILTER
 router.post('/events/find', (req, res, next) => {
     const {dateFrom, dateTo} = req.body
+    if(dateFrom.length===0 ||dateTo.length===0){
+        res.render('events/', { message: 'Please provide a date',user: req.user });
+        return
+    }
     // console.log(dateFrom)
     // console.log(dateTo)
     Events.find({date: {$gte: new Date (dateFrom), $lte: new Date (dateTo) } })
     .then(eventsFromDB => {
         console.log(eventsFromDB)
-        res.render('events/index.hbs', { eventList: eventsFromDB })
+        res.render('events/index.hbs', { eventList: eventsFromDB,user: req.user })
     })
     
     .catch(err => next(err))
@@ -66,7 +70,7 @@ router.post('/events/find', (req, res, next) => {
 
 
 router.get('/events/add',isLoggedIn, (req, res, next) => {
-    res.render('events/addEvent')
+    res.render('events/addEvent', {user: req.user})
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
@@ -78,16 +82,16 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
     console.log(date)
     if(zipcode.length!==5){
-        res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
+        res.render('events/addEvent', { message: 'Please provide a valid zipcode',user: req.user });
         return
     }
     if(title.length===0){
        // console.log('date ======' + date.length)
-        res.render('events/addEvent', { message: 'Please provide a Title for your event' });
+        res.render('events/addEvent', { message: 'Please provide a Title for your event',user: req.user });
         return
     }
     if(date.length===0){
-        res.render('events/addEvent', { message: 'Please choose a date' });
+        res.render('events/addEvent', { message: 'Please choose a date',user: req.user });
         return
     }
         // var now = new Date()
@@ -123,7 +127,7 @@ router.get('/myevents', isLoggedIn, (req, res, next) => {
         creator: req.user
     }).populate('creator')
 		.then(eventsFromDB => {
-			res.render('events/viewEvents.hbs', { events: eventsFromDB })
+			res.render('events/viewEvents.hbs', { events: eventsFromDB ,user: req.user})
 		})
         
 		.catch(err => next(err))
@@ -144,7 +148,7 @@ router.get('/event/:id', (req, res, next) => {
             }
            
             
-			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification })
+			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification,user: req.user })
 		})
 		.catch(err => next(err))
 });
@@ -195,5 +199,15 @@ router.get('/event/delete/:id',userEditAccess, (req,res,next) => {
 		res.redirect('/events')
 	})
 	.catch(err => next(err))
+})
+
+router.post('/event/search', (req, res, next) => {
+    const searchItem = req.body.search
+    //Events.find(searchItem)
+    
+    Events.find({$text: {$search: searchItem.toLowerCase()}})
+    .then(findedEvents => {
+        res.render('events/viewEvents.hbs', { events: findedEvents ,user: req.user})
+    })
 })
 module.exports = router
