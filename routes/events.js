@@ -117,6 +117,45 @@ router.get('/event/:id', (req, res, next) => {
 		.catch(err => next(err))
 });
 
+
+router.get('/event/edit/:id', userEditAccess,(req, res, next) => {
+	const id = req.params.id
+
+	Events.findById(id)
+		.then(eventsFromDB => {
+			console.log(eventsFromDB)
+		
+			res.render('events/editForm', { events: eventsFromDB })
+		})
+		.catch(err => next(err))
+});
+
+router.post('/event/edit/:id', userEditAccess,(req, res, next) => {
+	const id = req.params.id
+	// retrieve the values from the request body
+	const { title, date ,genre, street, city, zipcode, about, artists } = req.body
+	
+	Events.findByIdAndUpdate(id, {
+		title,
+		date,
+		genre,
+		street,
+        city,
+        zipcode,
+        about,
+        artists,
+
+	}, { new: true })
+		.then(updatedEvent => {
+			console.log(updatedEvent)
+			// redirect to the details of the updated book
+			res.redirect(`/event/${updatedEvent._id}`)
+		})
+		.catch(err => next(err))
+});
+
+
+
 router.get('/event/delete/:id',userEditAccess, (req,res,next) => {
 	const id = req.params.id
     Events.findByIdAndDelete(id)
