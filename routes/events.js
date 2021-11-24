@@ -11,6 +11,14 @@ router.get('/events', (req, res, next) => {
     console.log(req.user)
     Events.find()
     .then(eventsFromDB => {
+        // eventsFromDB
+        // const sliced = eventsFromDB.map(event => {
+        //     return event.date.toString().slice(0,10)
+        // })
+        // console.log('dates', sliced)
+
+
+        // /events | THIS IS THE CODE THAT ORGANIZES EVENTS FROM EARLIEST TO LATEST
         eventsFromDB
         .sort(function(a, b) {
             var keyA = new Date(a.date),
@@ -20,22 +28,45 @@ router.get('/events', (req, res, next) => {
             if (keyA > keyB) return 1;
             return 0;
           })
-            // .map(event => {
-            //    return {
-            //        ...event,
-            //        date: event.date.slice(0,10)
-            //    } 
-            // })
+
+           // /events | DISPLAYS EVENTS AS A STRING -> 'Mon Nov 01',
+            .map(event => {
+               return {
+                   ...event,
+                   date: event.date.toString().slice(0,10)
+               } 
+            })
+
+
         //   })
-        //console.log(eventsFromDB)
-        // render the view
-        res.render('events/index.hbs', { eventList: eventsFromDB, user: req.user })
+        console.log(eventsFromDB)
+    
+        res.render('events/index.hbs', { eventList: eventsFromDB })
     })
     .catch(err => next(err))
 })
 
+
+
+
+// /events |THIS IS FOR THE DATE RANGE FILTER
+router.post('/events/find', (req, res, next) => {
+    const {dateFrom, dateTo} = req.body
+    // console.log(dateFrom)
+    // console.log(dateTo)
+    Events.find({date: {$gte: new Date (dateFrom), $lte: new Date (dateTo) } })
+    .then(eventsFromDB => {
+        console.log(eventsFromDB)
+        res.render('events/index.hbs', { eventList: eventsFromDB })
+    })
+    
+    .catch(err => next(err))
+});
+
+
+
 router.get('/events/add',isLoggedIn, (req, res, next) => {
-    res.render('events/addEvent', {user: req.user})
+    res.render('events/addEvent')
 })
 
 router.post('/events/add', isLoggedIn, (req, res, next) => {
@@ -45,17 +76,18 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
     //console.log(id)
     //res.send(req.body)
     const {title, date,genre,street,city,zipcode,about,indoors,cost,minAge,artists} = req.body
+    console.log(date)
     if(zipcode.length!==5){
-        res.render('events/addEvent', { message: 'Please provide a valid zipcode',user: req.user });
+        res.render('events/addEvent', { message: 'Please provide a valid zipcode' });
         return
     }
     if(title.length===0){
        // console.log('date ======' + date.length)
-        res.render('events/addEvent', { message: 'Please provide a Title for your event',user: req.user });
+        res.render('events/addEvent', { message: 'Please provide a Title for your event' });
         return
     }
     if(date.length===0){
-        res.render('events/addEvent', { message: 'Please choose a date',user: req.user});
+        res.render('events/addEvent', { message: 'Please choose a date' });
         return
     }
         // var now = new Date()
@@ -91,7 +123,7 @@ router.get('/myevents', isLoggedIn, (req, res, next) => {
         creator: req.user
     }).populate('creator')
 		.then(eventsFromDB => {
-			res.render('events/viewEvents.hbs', { events: eventsFromDB ,user: req.user})
+			res.render('events/viewEvents.hbs', { events: eventsFromDB })
 		})
         
 		.catch(err => next(err))
@@ -112,7 +144,7 @@ router.get('/event/:id', (req, res, next) => {
             }
            
             
-			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification ,user: req.user})
+			res.render('events/eventDetails', { events: eventsFromDB, loggedInUserName: loggedInUserName, identification: identification })
 		})
 		.catch(err => next(err))
 });
