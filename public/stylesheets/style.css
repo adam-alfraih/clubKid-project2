@@ -43,6 +43,7 @@ input {
 
 .frontPage {
   display: flex;
+  align-items: center;
   font-size: 350px;
   margin-top: 400px;
   width: 100%;
@@ -108,22 +109,24 @@ header {
 }
 
 
-#navigation a, .logo, .frontPageText {
+#navigation a, .logo, .frontPageText, .signUpGithub {
   color: white !important;
   text-decoration: none;
   margin-left: 2rem;
 }
 
-#navigation a:visited, .logo, .frontPageText:visited {
+#navigation a:visited, .logo, .frontPageText:visited, .signUpGithub:visited {
   color: white !important;
   text-decoration: none;
 }
 
-#navigation a:hover, .logo:hover, .frontPageText:hover {
+#navigation a:hover, .logo:hover, .frontPageText:hover, .signUpGithub:hover {
   color: #FFAA00 !important;;
   text-decoration: none;
   transition: 0.3s;
 }
+
+
 
 #navigation a:active {
   color: #FFAA00 !important;;
@@ -277,4 +280,10 @@ header {
   
   width: 400px;
   margin: 0 auto;
+}
+
+.signUpGithub {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0rem;
 }

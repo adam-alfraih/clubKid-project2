@@ -1,20 +1,32 @@
 <h1>Signup</h1>
-<form action="/signup" method="POST">
-	
-    <label for="email">E-mail: </label>
-	<input type="text" name="email" id="email">
-    
-    <label for="username">Username: </label>
-	<input type="text" name="username" id="username">
+<form action="/signup" method="POST" id="add"></form>
+	<div class='addForm'>
+		
+			
+			<div class="container-input-text">
+				<label for="email"></label>
+				<input type="text" name="email" id="email" placeholder="Email">
+			</div>
 
-	<label for="password">Password: </label>
-	<input type="password" name="password" id="password">
+			<div class="container-input-text">
+			<label for="username"></label>
+			<input type="text" name="username" id="username" placeholder="Username">
+			</div>
 
-	<button type="submit">Sign up</button>
+			<div class="container-input-text">
+			<label for="password"></label>
+			<input type="password" name="password" id="password" placeholder="Password">
+			</div>
+
+			<button type="submit">Sign up</button>
+		
+			<br>
+			<br>
+			<a href="/github" class="signUpGithub">Signup with GitHub</a>
+
+		{{#if message}}
+			<p style="color: red">{{message}}</p>
+		{{/if}}
+
+	</div>
 </form>
-
-<a href="/github">Sign Up with GitHub 🦊</a>
-
-{{#if message}}
-	<p style="color: red">{{message}}</p>
-{{/if}}
