@@ -112,7 +112,7 @@ header {
 #navigation a, a, .logo, .frontPageText, .signUpGithub {
   color: white !important;
   text-decoration: none;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 #navigation a {
