@@ -1,3 +1,9 @@
+/* Orange: #FFAA00
+Backround-color: #363535
+color: #CCCCCC
+Lighter grey : #D8D8D8 */
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -6,6 +12,8 @@ body {
 a {
   color: #00b7ff;
 }
+
+
 
 h1 {
   color: 15px;
@@ -59,3 +67,81 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  background-color: #363535;
+}
+
+.navBarCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+#navigation a {
+  color: white !important;
+  text-decoration: none;
+  margin-left: 2rem;
+}
+
+#navigation a:visited {
+  color: white !important;
+  text-decoration: none;
+}
+
+#navigation a:hover {
+  color: #FFAA00 !important;;
+  text-decoration: none;
+  transition: 0.7s;
+}
+
+#navigation a:active {
+  color: #FFAA00 !important;;
+  text-decoration: none;
+}
+
+#navigation a:not(:last-child) {
+  margin-right: 20px;
+}
+
+
+
+#logout {
+  color: white;
+  font-family: var(--font-title);
+    font-size: 16px;
+    line-height: 22.4px;
+
+}
+
+
+.loggedOutUserNav  {
+  display: flex;
+  width: 152px;
+  justify-content: space-around;
+  color: white;
+  font-family: var(--font-title);
+  font-size: 16px;
+  line-height: 22.4px;
+
+}
+
+.loggedOutUserNav a {
+  text-decoration: none;
+  color: white;
+}
+/* #logout {
+  padding-left: 2rem;
+} */
+
