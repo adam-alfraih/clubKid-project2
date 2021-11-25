@@ -3,22 +3,29 @@
 <h1> My events </h1>
 {{#each events}}
 
-<div class="container2">
-    <a id="link-component" href="/event/{{_id}}">
-        <div class="event-component">
+
+
+<div class="container-row">
+    <a class="content" href="/event/{{_id}}">
         <p>{{dateString}}</p>
-            <h4>{{title}}</h4>
+        <h4>{{title}}</h4>
         <p>{{address.street}},{{address.zipcode}}, {{address.city}}</p>
-        </div>
-        
     </a>
-    <div class="editAndDeleteContainer">
-            <div class="icon">
-                <i class="icon icon-edit-regular icons"></i>
-            </div>
-            <div class="icon">
-                <i class="icon icon-trash-regular icons"></i>
-            </div>
+
+    <div class="icons-container">
+        <div class="icon">
+            <a href="/event/edit/{{_id}}"><i class="icon icon-edit-regular icons"></i></a>
+            
         </div>
+        <div class="icon">
+             <a id="deleteBtn" href="#"><i class="icon icon-trash-regular icons"></i></a>
+            
+        </div>
+    </div>
+</div>
+<div id="popupDelete" style="display: none;">
+    <p>Are you sure you want to delete this event?</p>
+    <a href="/event/delete/{{_id}}">Yes</a>
+    <a id="nobtn" href="#">No</a>
 </div>
 {{/each}}

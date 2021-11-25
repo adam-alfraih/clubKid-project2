@@ -278,3 +278,47 @@ header {
   width: 400px;
   margin: 0 auto;
 }
+
+.container-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.container-row .content {
+  background-color: red;
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: center;
+  background-color: #363535;
+    color: #cccccc;
+    margin-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    box-shadow: 0px 0.3px 1px #cccccc; 
+    width: 90vw;
+}
+.content:hover {
+  background-color: black;
+  color: #ffaa00;
+  transition: 0.7s;
+  box-shadow: 0px 0.2px 0.4px hsl(40, 73%, 28%); 
+}
+
+.icons-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+a {
+  text-decoration: none;
+}
+
+/* #popupDelete {
+  display: none;
+} */
