@@ -41,6 +41,13 @@ input {
   box-sizing: border-box;
 }
 
+.frontPage {
+  display: flex;
+  font-size: 350px;
+  margin-top: 400px;
+  width: 100%;
+}
+
 /* Style the search field */
 form.example input[type=text] {
   padding: 10px;
@@ -101,21 +108,21 @@ header {
 }
 
 
-#navigation a {
+#navigation a, .logo {
   color: white !important;
   text-decoration: none;
   margin-left: 2rem;
 }
 
-#navigation a:visited {
+#navigation a:visited, .logo {
   color: white !important;
   text-decoration: none;
 }
 
-#navigation a:hover {
+#navigation a:hover, .logo:hover {
   color: #FFAA00 !important;;
   text-decoration: none;
-  transition: 0.7s;
+  transition: 0.2s;
 }
 
 #navigation a:active {
@@ -138,7 +145,7 @@ header {
 }
 
 
-.loggedOutUserNav  {
+.loggedOutUserNav {
   display: flex;
   width: 152px;
   justify-content: space-around;
