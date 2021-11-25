@@ -7,6 +7,10 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link rel="stylesheet" href="https://unpkg.com/fajny-css/css/fajny-icons.min.css" type="text/css" />
       <title>{{title}}</title>
+      {{!-- this is for the font --}}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Roboto&display=swap" rel="stylesheet">
       {{!-- THIS IS FOR MAPBOX  --}}
       <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
       <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
@@ -29,7 +33,7 @@
    {{#if user}}
 
 <header>
-    <a id="logo" href="#" class="logo">
+    <a id="logo" href="/" class="logo">
         <img src="/assets/images/logo-fajny-css-white.svg" alt="Logo" />
     </a>
     <nav id="navigation">
@@ -47,7 +51,7 @@
       {{!-- This is if the user is not logged in--}}
       {{else}}
 <header>
-    <a href="logo" class="logo">
+    <a href="/" class="logo">
         <img src="/assets/images/logo-fajny-css-white.svg" alt="Logo" />
     </a>
 
