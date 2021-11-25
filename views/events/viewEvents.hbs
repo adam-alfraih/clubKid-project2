@@ -2,9 +2,22 @@
 
 {{#each events}}
 
-<a href="/event/{{_id}}"">{{title}} </a>
-
-
-
-
+<div class="container2">
+    <a id="link-component" href="/event/{{_id}}">
+        <div class="event-component">
+        <p>{{dateString}}</p>
+            <h4>{{title}}</h4>
+        <p>{{address.street}},{{address.zipcode}}, {{address.city}}</p>
+        </div>
+        
+    </a>
+    <div class="editAndDeleteContainer">
+            <div class="icon">
+                <i class="icon icon-edit-regular icons"></i>
+            </div>
+            <div class="icon">
+                <i class="icon icon-trash-regular icons"></i>
+            </div>
+        </div>
+</div>
 {{/each}}

@@ -1,19 +1,27 @@
 {{#with events}}
 	<h1>{{title}}</h1>
-	<p>Date: {{date}}</p>
+	<p>Date: {{dateString}}</p>
 	<p>Genre: {{genre}}</p>
-	<p>Location: {{address.street}} {{address.city}}</p>
 	<p>About: {{about}}</p>
 	<p>Indoor/Outdoors:{{indoors}}</p>
-	<p>Cost: {{cost}}</p>
+	<p>Cost: {{cost}} &#8364;</p>
 	<p>Minimum Age: {{minAge}}</p>
 	<p>Artists: {{artists}}</p>
+	<p>Location: {{address.street}} {{address.city}}</p>
 	<p>Creator: {{creator.username}}</p>
 {{/with}}
 {{#if identification}}
 {{#with events}}
 <a href="/event/edit/{{_id}}">Edit this event ✏️</a>
 <a href="/event/delete/{{_id}}">Delete this event ❌</a>
+
+ 	<div id='latitudeDiv'>
+      {{latitude}}
+    </div>
+    <div id='longitudeDiv'>
+      {{longitude}}
+    </div>
+
 {{/with}}
 
 {{/if}}

@@ -1,28 +1,33 @@
-<h1>Events</h1>
 <form class="example" action="/event/search" method="POST">
   <input type="text" placeholder="Search an event" name="search">
   <button type="submit"><i class="fa fa-search">Search</i></button>
 </form>
 
+
+<div class="date-container">
 <form id="add" action="/events/find" method="POST">
-    <h1>Filter Dates:</h1>
-    <label for="date">From: </label>
+    <label class="chalendarLabel" for="date"></label>
 	{{!-- name = router.post / req.body in events.js --}}
-    <input type="date" name="dateFrom" id="dateFrom">
+    <input class="chalendarInput" type="date" name="dateFrom" id="dateFrom">
 
-     <label for="date">To: </label>
-    <input type="date" name="dateTo" id="dateTo">
-    <button type="submit">Filter Dates</button>
+     <label class="chalendarLabel" for="date">&nbsp;To&nbsp;</label>
+    <input class="chalendarInput" type="date" name="dateTo" id="dateTo">
+    <button class="chalendarButton" type="submit">Filter by date</button>
+</form>
+</div>
 
-
-{{#each  eventList}}
-
-{{dateString}}
-	<a href="/event/{{_id}}">
-		<h4>{{title}}</h4>
-	</a>
-{{/each}}
-
+{{!-- Display the events --}}
+  <div id="event-container">
+  {{#each  eventList}}
+  <a id="link-component" href="/event/{{_id}}">
+    <div class="event-component">
+      <p>{{dateString}}</p>
+          <h4>{{title}}</h4>
+      <p>{{address.street}},{{address.zipcode}}, {{address.city}}</p>
+    </div>
+    </a>
+  {{/each}}
+</div>
 {{#if message}}
 <p>{{message}}</p>
 {{/if}}
