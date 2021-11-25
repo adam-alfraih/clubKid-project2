@@ -23,7 +23,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 
 // PASSPORT
 router.post('/login', passport.authenticate('local', {
-	successRedirect: '/profile',
+	successRedirect: '/myevents',
 	failureRedirect: '/login',
 	passReqToCallback: true
 }))
@@ -31,7 +31,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/github', passport.authenticate('github'));
 
 router.get('/auth/github/callback', passport.authenticate('github', {
-	successRedirect: '/profile',
+	successRedirect: '/myevents',
 	failureRedirect: '/login'
 }))
 router.post('/signup', (req, res, next) => {
