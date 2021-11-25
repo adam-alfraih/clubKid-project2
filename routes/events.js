@@ -5,7 +5,11 @@ const Events = require('../models/Event');
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const userEditAccess = require("../middleware/userEditAccess");
-
+//NEWWWWW MAPBOX
+const MapboxClient = require('mapbox');
+const accessToken = "pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA";
+const client = new MapboxClient(accessToken);
+//END MAPBOX
 
 router.get('/events', (req, res, next) => {
     console.log(req.user)
@@ -94,31 +98,39 @@ router.post('/events/add', isLoggedIn, (req, res, next) => {
     const newdate = new Date(date)
     var newD = newdate.toDateString()
     
-   //NEW ENTRYYYY
-
-   //END OF NEW ENTRY
-
+   //NEW ENTRYYYY including coordinates with mapbox
+   const address = `${street}, ${city}, ${zipcode}`;
+   client.geocodeForward(address)
+   .then(response => {
+     // res is the http response, including: status, headers and entity properties
+     var data = response.entity.features[0].geometry.coordinates; // data is the geocoding result as parsed JSON
+     const latitude = data[0]
+     const longitude = data[1]
     Events.create({
-        title: title,
-        date: date,
-        dateString: newD,
-        genre: genre,
-        address: {
-            street: street,
-            city: city,
-            zipcode: zipcode,
-        },
-        about: about,
-        indoors: indoors,
-        cost: cost,
-        minAge: minAge,
-        artists: artists,
-        creator: req.user._id
-    })
-    .then(createdEvent => {    
+         title: title,
+         date: date,
+         dateString: newD,
+         genre: genre,
+         address: {
+             street: street,
+             city: city,
+             zipcode: zipcode,
+         },
+         latitude: latitude,
+         longitude: longitude,
+         about: about,
+         indoors: indoors,
+         cost: cost,
+         minAge: minAge,
+         artists: artists,
+         creator: req.user._id
+     })
+     .then(createdEvent => {    
         res.redirect(`/event/${createdEvent._id}`)   
     })
-})
+     .catch((err) => next(err));
+    }) 
+ });
 
 router.get('/myevents', isLoggedIn, (req, res, next) => {
    //s console.log(reqs)

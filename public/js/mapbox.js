@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWRhbWFsZnJheSIsImEiOiJja3dkcGV0cmIwbHRyMnZudGhpNXd0YmlvIn0.wwenpbRDlD1TbMw6e-PvTA';
+mapboxgl.accessToken = 'pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA';
 const map = new mapboxgl.Map({
 	container: 'map', // container ID
 	style: "mapbox://styles/mapbox/streets-v11", // style URL
@@ -56,15 +56,14 @@ map.on('click', addMarker)
 
 //NEW CODE
 
-// axios.get('/spaeti/')
+// axios.get('/event/:id')
 //   .then(async res => {
 //     //console.log(res)
 //     const spaetis = res.data
 //     console.log(res.data);
-//     for (let i = 0; i < spaetis.length; i++) {
-//       const coord = [spaetis[i].latitude, spaetis[i].longitude]
+    
+//     //   const coord = [spaetis[i].latitude, spaetis[i].longitude]
 //       await addMarker2(coord)
-//      }
 //   })
 
 //   function addMarker2 (coord) {
