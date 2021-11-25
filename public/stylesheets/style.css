@@ -23,7 +23,7 @@ body {
 }
 
 a {
-  color: #00b7ff;
+  
 }
 
 
@@ -108,21 +108,21 @@ header {
 }
 
 
-#navigation a, .logo {
+#navigation a, .logo, .frontPageText {
   color: white !important;
   text-decoration: none;
   margin-left: 2rem;
 }
 
-#navigation a:visited, .logo {
+#navigation a:visited, .logo, .frontPageText:visited {
   color: white !important;
   text-decoration: none;
 }
 
-#navigation a:hover, .logo:hover {
+#navigation a:hover, .logo:hover, .frontPageText:hover {
   color: #FFAA00 !important;;
   text-decoration: none;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 #navigation a:active {
@@ -278,5 +278,3 @@ header {
   width: 400px;
   margin: 0 auto;
 }
-
-
