@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-      {{!-- THIS IS FOR MAPBOX  --}}
-      <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
-      <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
-      <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
-         <!-- mapbox-gl-geocoder -->
-   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{title}}</title>
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+   {{!-- THIS IS FOR MAPBOX --}}
+   <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+   <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+   <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
+   <!-- mapbox-gl-geocoder -->
+   <script
+      src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+   <link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css"
+      type="text/css">
    <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
-      </head>
+   <link rel="stylesheet" href="https://unpkg.com/fajny-css/css/fajny.min.css" type="text/css" />
+   <link rel="stylesheet" href="https://unpkg.com/fajny-css/css/fajny-icons.min.css" type="text/css" />
 
-   <body>
-      {{#if user}}
-<nav>
-<a href="/">Home </a>
-<br />
-<a href="/events">Events</a>
-<br />
-<a href="/myevents">My events </a>
-<br />
-<a href="/events/add">Add new events</a>
-<br />
-<a href="/logout">Log Out </a>
-    
+</head>
 
-{{else}}
-<nav>
-   <a href="/">Home</a>
-   <br />
-   <a href="/events">Events</a>
-    <br />
-    <a href="/login">Log in </a>
-    <br/>
-    <a href="/signup"> Sign up </a>
-    <br />
-    
-    
-   
-  
-</nav>
-{{/if}}
+<body>
+   {{#if user}}
+   <nav>
+      <a href="/">Home </a>
+      <br />
+      <a href="/events">Events</a>
+      <br />
+      <a href="/myevents">My events </a>
+      <br />
+      <a href="/events/add">Add new events</a>
+      <br />
+      <a href="/logout">Log Out </a>
+
+
+      {{else}}
+      <nav>
+         <a href="/">Home</a>
+         <br />
+         <a href="/events">Events</a>
+         <br />
+         <a href="/login">Log in </a>
+         <br />
+         <a href="/signup"> Sign up </a>
+         <br />
+
+
+
+
+      </nav>
+      {{/if}}
       {{{body}}}
-     
+
+      <script src="https://unpkg.com/fajny-css/js/script.min.js"></script>
       <script src="/js/script.js"></script>
       <script src="../public/js/mapbox.js"></script>
-   </body>
+
+</body>
 
 </html>

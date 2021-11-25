@@ -1,42 +1,100 @@
-
 <form id="add" action="/events/add" method="POST">
     <h1>Add new event</h1>
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title">
 
-    <label for="date">Date</label>
-    <input type="date" name="date" id="date">
+    {{!-- <input type="text" name="title" id="title"> --}}
 
-    <label for="genre">Genre</label>
-    <input type="text" name="genre" id="genre">
+    <div class="container-input-text">
+        <label for="title"></label>
+        <input type="text" name="title" id="title" placeholder="Title" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="street">Street</label>
-    <input type="text" name="street" id="street">
+    <div class="container-input-text">
+        <label for="date"></label>
+        <input type="date" name="date" id="date">
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="city">City</label>
-    <input type="text" name="city" id="city">
+    <div class="container-input-text">
+        <label for="genre"></label>
+        <input type="text" name="genre" id="genre" placeholder="Genre" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="zipcode">Zipcode</label>
-    <input type="text" name="zipcode" id="zipcode">
+    <div class="container-input-text">
+        <label for="street"></label>
+        <input type="text" name="street" id="street" placeholder="Street" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="about">About</label>
-    <input type="textarea" name="about" id="about">
+    <div class="container-input-text">
+        <label for="city"></label>
+        <input type="text" name="city" id="city" placeholder="City" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    Indoors<input checked="checked" name="indoors" type="radio" value="indoors" />
-	Outdoors<input name="indoors" type="radio" value="outdoors" />
-  	Both<input name="indoors" type="radio" value="both" />
+    <div class="container-input-text">
 
-    <label for="cost">Cost</label>
-    <input type="number" name="cost" id="cost" min="0">
+        <label for="zipcode"></label>
+        <input type="text" name="zipcode" id="zipcode" placeholder="Zipcode" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="minAge">Age</label>
-    <input type="number" name="minAge" id="minAge" min="1" max="18">
+    <div class="container-input-text">
+        <label for="street"></label>
+        <input type="text" name="street" id="street" placeholder="Street" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="artists">Artists</label>
-    <input type="text" name="artists" id="artists">
+
+    <div class="container-input-text">
+        <label for="about"></label>
+        <textarea placeholder="About"></textarea>
+        <span class="error-message">Error Text</span>
+    </div>
+
+
+ <div class="container-input-text">
+        <label for="minAge"></label>
+        <input type="number" name="minAge" id="minAge" min="1" max="18" placeholder="Age" />
+        <span class="error-message">Error Text</span>
+    </div>
+
+
+
+
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio1" />
+    <label for="radio1" class="radio-label"></label>
+    <label for="radio1" class="text-label">Indoors</label>
+</div>
+
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio2" />
+    <label for="radio2" class="radio-label"></label>
+    <label for="radio2" class="text-label">Outdoors</label>
+</div>
+
+
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio3" />
+    <label for="radio3" class="radio-label"></label>
+    <label for="radio3" class="text-label">both</label>
+</div>
+
+ <div class="container-input-text">
+        <label for="artists"></label>
+        <input type="text" name="artists" id="artists" placeholder="Artits" />
+        <span class="error-message">Error Text</span>
+    </div>
+
+
+
+
+
 
     <button type="submit">Add Event</button>
     {{#if message}}
     <p style="color: red">{{message}}</p>
-{{/if}}
+    {{/if}}
 </form>
