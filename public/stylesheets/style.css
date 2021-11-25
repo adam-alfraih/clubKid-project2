@@ -4,11 +4,22 @@ color: #CCCCCC
 Lighter grey : #D8D8D8 */
 
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Roboto&display=swap');
+
+p, a, button {
+  font-family:  'Manrope', sans-serif;
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family:  'Manrope', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Roboto&display=swap');
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   background-color:#1a1919;
   color: #cccccc;
+  font-family: 'Manrope', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -21,9 +32,6 @@ h1 {
   color: 15px;
 }
 
-#add {
- 
-}
 
 input {
   /* padding: 20px 1xx0px 20px 10px; */
@@ -31,6 +39,13 @@ input {
 }
 * {
   box-sizing: border-box;
+}
+
+.frontPage {
+  display: flex;
+  font-size: 350px;
+  margin-top: 400px;
+  width: 100%;
 }
 
 /* Style the search field */
@@ -93,21 +108,21 @@ header {
 }
 
 
-#navigation a {
+#navigation a, .logo {
   color: white !important;
   text-decoration: none;
   margin-left: 2rem;
 }
 
-#navigation a:visited {
+#navigation a:visited, .logo {
   color: white !important;
   text-decoration: none;
 }
 
-#navigation a:hover {
+#navigation a:hover, .logo:hover {
   color: #FFAA00 !important;;
   text-decoration: none;
-  transition: 0.7s;
+  transition: 0.2s;
 }
 
 #navigation a:active {
@@ -130,7 +145,7 @@ header {
 }
 
 
-.loggedOutUserNav  {
+.loggedOutUserNav {
   display: flex;
   width: 152px;
   justify-content: space-around;
