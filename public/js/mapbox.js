@@ -1,5 +1,6 @@
+console.log('adam')
 mapboxgl.accessToken = 'pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA';
-
+console.log('adam')
 let latitude = document.querySelector('#latitudeDiv').innerText;
 let longitude = document.querySelector('#longitudeDiv').innerText;
 console.log(latitude);

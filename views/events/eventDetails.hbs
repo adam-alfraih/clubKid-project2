@@ -15,18 +15,22 @@
 <a href="/event/edit/{{_id}}">Edit this event</a>
 <a href="/event/delete/{{_id}}">Delete this event</a>
 
- 	<div id='latitudeDiv'>
+ 	
+
+{{/with}}
+
+{{/if}}
+{{#with events}}
+	<div id='latitudeDiv'>
       {{latitude}}
     </div>
     <div id='longitudeDiv'>
       {{longitude}}
     </div>
-
 {{/with}}
-
-{{/if}}
 <body>
       {{!-- THIS IS FOR MAPBOX --}}
       <div id='map' style='width: 50vw; height: 50vh;'></div>
+	 
       <script src="/js/mapbox.js"></script> 
 </body>
