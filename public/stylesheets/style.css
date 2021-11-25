@@ -251,3 +251,17 @@ header {
 #longitudeDiv {
   color: #1a1919;
 }
+.editForm {
+  
+  width: 400px;
+  margin: 0 auto;
+
+}
+
+.addForm{
+  
+  width: 400px;
+  margin: 0 auto;
+}
+
+
