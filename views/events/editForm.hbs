@@ -1,39 +1,89 @@
 <h1>Edit your event</h1>
 {{#with events}}
-<form action="/event/edit/{{_id}}" method="POST">
-    <label for="title">Title: </label>
-    <input type="text" name="title" id="title" value="{{title}}" />
+<form action="/event/edit/{{_id}}" method="POST" class='styled-form'>
+<div class= 'editForm'>
+  <div class="container-input-text">
+        <label for="title"></label>
+        <input type="text" name="title" id="title" placeholder="title"  value="{{title}}"  />
+        <span class="error-message">Error Text</span>
+           </div>  
+  
 {{/with}}
 {{#with newDate}}
-    <label for="date">Date: </label>
-    <input type="date" name="date" id="date" value="{{this}}" />
+      <div class="container-input-text">
+        <label for="date"></label>
+        <input type="date" name="date" id="date" placeholder="date"  value="{{date}}"  />
+        <span class="error-message">Error Text</span>
+    </div>
+    
 {{/with}}
 {{#with events}}
-    <label for="street">Street:</label>
-    <input type="text" name="street" id="street" value="{{address.street}}" />
 
-    <label for="city">City:</label>
-    <input type="text" name="city" id="city" value="{{address.city}}" />
+    <div class="container-input-text">
+        <label for="street"></label>
+        <input type="text" name="street" id="street" placeholder="Street" value="{{address.street}}"  />
+        <span class="error-message">Error Text</span>
+    </div>
+ 
+     <div class="container-input-text">
+        <label for="city"></label>
+        <input type="text" name="city" id="city" placeholder="City" value="{{address.city}}"/>
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="zipcode">Zipcode:</label>
-    <input type="text" name="zipcode" id="zipcode" value="{{address.zipcode}}" />
+<div class="container-input-text">
+        <label for="zipcode"></label>
+        <input type="text" name="zipcode" id="zipcode" placeholder="Zipcode" value="{{address.zipcode}}"/>
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="about">About:</label>
-    <input type="text" name="about" id="about" value="{{about}}" />
+   
+    <div class="container-input-text">
+        <label for="about"></label>
+        <textarea placeholder="About" value="{{about}}" ></textarea>
+        <span class="error-message">Error Text</span>
+    </div>
 
-    Indoors<input checked="checked" name="indoors" type="radio" value="indoors" id="indoors" value="{{indoors}}" />
-    Outdoors<input name="indoors" type="radio" value="outdoors" id="outdoors" value="{{outdoors}}" />
-    Both<input name="indoors" type="radio" value="both" id="both" value="{{both}}" />
+ <div class="container-input-text">
+        <label for="minAge"></label>
+        <input type="number" name="minAge" id="minAge" min="1" max="18" placeholder="Age" value="{{minAge}}" />
+        <span class="error-message">Error Text</span>
+    </div>
 
-    <label for="cost">Cost</label>
-    <input type="number" name="cost" id="cost" min="0" value="{{cost}}" />
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio1" value="{{indoors}}"  />
+    <label for="radio1" class="radio-label"></label>
+    <label for="radio1" class="text-label">Indoors</label>
+</div>
 
-    <label for="minAge">Age</label>
-    <input type="number" name="minAge" id="minAge" min="1" max="18" value="{{minAge}}" />
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio2" value="{{outdoors}}" />
+    <label for="radio2" class="radio-label"></label>
+    <label for="radio2" class="text-label">Outdoors</label>
+</div>
 
-    <label for="artists">Artists:</label>
-    <input type="text" name="artists" id="artists" value="{{artists}}" />
+<div class="radio-container">
+    <input type="radio" name="radio" id="radio3" value="{{both}}" />
+    <label for="radio3" class="radio-label"></label>
+    <label for="radio3" class="text-label">both</label>
+</div>
+
+ <div class="container-input-text">
+        <label for="cost"></label>
+        <input type="number" name="cost" id="cost" placeholder="Cost" value="{{cost}}" />
+        <span class="error-message">Error Text</span>
+    </div>
+
+
+
+ <div class="container-input-text">
+        <label for="artists"></label>
+        <input type="text" name="artists" id="artists" placeholder="Artits" value="{{artists}}"/>
+        <span class="error-message">Error Text</span>
+    </div>
+
 
     <button type="submit">Update this Event</button>
+  </div>
 </form>
 {{/with}}

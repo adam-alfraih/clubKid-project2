@@ -59,3 +59,18 @@ form.example::after {
   clear: both;
   display: table;
 }
+
+.editForm {
+  
+  width: 400px;
+  margin: 0 auto;
+
+}
+
+.addForm{
+  
+  width: 400px;
+  margin: 0 auto;
+}
+
+

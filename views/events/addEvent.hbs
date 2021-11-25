@@ -2,7 +2,7 @@
     <h1>Add new event</h1>
 
     {{!-- <input type="text" name="title" id="title"> --}}
-
+<div class='addForm'>
     <div class="container-input-text">
         <label for="title"></label>
         <input type="text" name="title" id="title" placeholder="Title" />
@@ -40,6 +40,7 @@
         <span class="error-message">Error Text</span>
     </div>
 
+
     <div class="container-input-text">
         <label for="street"></label>
         <input type="text" name="street" id="street" placeholder="Street" />
@@ -59,7 +60,6 @@
         <input type="number" name="minAge" id="minAge" min="1" max="18" placeholder="Age" />
         <span class="error-message">Error Text</span>
     </div>
-
 
 
 
@@ -83,6 +83,12 @@
 </div>
 
  <div class="container-input-text">
+        <label for="cost"></label>
+        <input type="number" name="cost" id="cost" placeholder="Cost" />
+        <span class="error-message">Error Text</span>
+    </div>
+
+ <div class="container-input-text">
         <label for="artists"></label>
         <input type="text" name="artists" id="artists" placeholder="Artits" />
         <span class="error-message">Error Text</span>
@@ -90,11 +96,10 @@
 
 
 
-
-
-
     <button type="submit">Add Event</button>
     {{#if message}}
     <p style="color: red">{{message}}</p>
     {{/if}}
+
+</div>
 </form>
