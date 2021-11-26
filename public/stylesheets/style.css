@@ -53,7 +53,26 @@ input {
   font-size: 350px;
   margin-top: 50vh;
   width: 100%;
+  
 }
+.frontPage:hover {
+  /* display: flex;
+  align-items: center; */
+  font-size: 350px;
+  margin-top: 50vh;
+  width: 100%;
+  color: #ffaa00b9;
+  
+  background-image: url("../images/crowd.jpg");
+  transition: 1s;
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 /* Style the search field */
 form.example input[type=text] {
