@@ -6,14 +6,18 @@ document.addEventListener(
   false
 );
 
-document.getElementById('deleteBtn').addEventListener("click", function() {
-  // document.getElementById('popupDelete').removeAttribute('display')
-  document.querySelector('.popupDelete').style.setProperty('display','block')
-});
+// document.getElementById('deleteBtn').addEventListener("click", function() {
+//   // document.getElementById('popupDelete').removeAttribute('display')
+//   document.querySelector('.popupDelete').style.setProperty('display','block')
+// });
 
-document.getElementById('nobtn').addEventListener("click", function() {
-  // document.getElementById('popupDelete').removeAttribute('display')
-  // console.log(document.getElementById('popupDelete'))
-  document.querySelector('.popupDelete').style.setProperty('display','none')
-});
+// document.getElementById('nobtn').addEventListener("click", function() {
+//   // document.getElementById('popupDelete').removeAttribute('display')
+//   // console.log(document.getElementById('popupDelete'))
+//   document.querySelector('.popupDelete').style.setProperty('display','none')
+// });
 
+function deleteF(e) {
+  const container = e.parentNode.parentNode.parentNode.parentNode
+  container.classList.toggle('open')
+}

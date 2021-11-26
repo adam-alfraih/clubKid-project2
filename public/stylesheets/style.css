@@ -360,3 +360,11 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+.container-popup .popup {
+  display: none;
+}
+
+.container-popup.open .popup{
+  display: block;
+}
