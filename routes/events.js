@@ -181,27 +181,41 @@ router.get('/event/edit/:id', userEditAccess,(req, res, next) => {
 router.post('/event/edit/:id', userEditAccess,(req, res, next) => {
 	const id = req.params.id
 	// retrieve the values from the request body
-	const { title, date ,genre, street, city, zipcode, about, artists } = req.body
+	const { title, date ,genre, street, city, zipcode,indoors,cost,minAge, about, artists } = req.body
 	const newdate = new Date(date)
     var newD = newdate.toDateString()
-	Events.findByIdAndUpdate(id, {
-		title,
-		date,
-        dateString: newD,
-		genre,
-		street,
-        city,
-        zipcode,
-        about,
-        artists,
-
-	}, { new: true })
-		.then(updatedEvent => {
-			console.log(updatedEvent)
-			// redirect to the details of the updated book
-			res.redirect(`/event/${updatedEvent._id}`)
-		})
-		.catch(err => next(err))
+    const address = `${street}, ${city}, ${zipcode}`;
+    client.geocodeForward(address)
+    .then(response => {
+        var data = response.entity.features[0].geometry.coordinates; // data is the geocoding result as parsed JSON
+         const latitude = data[0]
+         const longitude = data[1]
+         Events.findByIdAndUpdate(id, {
+            title: title,
+            date: date,
+            dateString: newD,
+            genre: genre,
+            address: {
+                street: street,
+                city: city,
+                zipcode: zipcode,
+            },
+            latitude: latitude,
+            longitude: longitude,
+            about: about,
+            indoors: indoors,
+            cost: cost,
+            minAge: minAge,
+            artists: artists
+         }, { new: true })
+            .then(updatedEvent => {
+                console.log(updatedEvent)
+                // redirect to the details of the updated book
+                res.redirect(`/event/${updatedEvent._id}`)
+            })
+            .catch(err => next(err))
+    })       
+            
 });
 
 
@@ -210,7 +224,7 @@ router.get('/event/delete/:id',userEditAccess, (req,res,next) => {
 	const id = req.params.id
     Events.findByIdAndDelete(id)
 	.then(() => {
-		res.redirect('/events')
+		res.redirect('/myevents')
 	})
 	.catch(err => next(err))
 })

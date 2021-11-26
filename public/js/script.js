@@ -8,11 +8,12 @@ document.addEventListener(
 
 document.getElementById('deleteBtn').addEventListener("click", function() {
   // document.getElementById('popupDelete').removeAttribute('display')
-  document.getElementById('popupDelete').style.setProperty('display','block')
+  document.querySelector('.popupDelete').style.setProperty('display','block')
 });
 
 document.getElementById('nobtn').addEventListener("click", function() {
   // document.getElementById('popupDelete').removeAttribute('display')
   // console.log(document.getElementById('popupDelete'))
-  document.getElementById('popupDelete').style.setProperty('display','none')
+  document.querySelector('.popupDelete').style.setProperty('display','none')
 });
+
