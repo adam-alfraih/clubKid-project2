@@ -237,7 +237,12 @@ router.post('/event/search', (req, res, next) => {
     }
     Events.find({$text: {$search: searchItem.toLowerCase()}})
     .then(findedEvents => {
-        res.render('events/index.hbs', { eventList: findedEvents ,user: req.user})
+        let noMessage = false
+        if(findedEvents.length===0){
+            noMessage = true
+        }
+            
+        res.render('events/index.hbs', { eventList: findedEvents ,user: req.user, message2: noMessage})
     })
 })
 module.exports = router

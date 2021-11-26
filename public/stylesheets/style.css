@@ -40,11 +40,18 @@ input {
   box-sizing: border-box;
 }
 
+.header2 > .frontPage {
+  position: relative;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
 .frontPage {
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   font-size: 350px;
-  margin-top: 400px;
+  margin-top: 50vh;
   width: 100%;
 }
 
@@ -344,4 +351,12 @@ a {
   display: flex;
   justify-content: space-between;
   margin-left: 0rem;
+}
+
+#NoResults {
+  margin-top: 200px;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
