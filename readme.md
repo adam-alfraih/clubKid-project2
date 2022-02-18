@@ -49,7 +49,7 @@ npm install
 npm start
 ```
 
-Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deployed version</a>
+Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deployed project</a>
 
 ## Screenshots
 
