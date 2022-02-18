@@ -1,27 +1,46 @@
 # CRUD Event Web App
 
-'clubkid' is ___
+'clubKid' is the second project I've created during an intensive 3-month bootcamp at Ironhack.
 
 This project functions as intended. Although, it continues to be a **work in progress**.
+
 
 ## Overview
 
 This is a fullstack web app.
 
-### My idea
+### The idea
 
-
+On a team of three people including myself, we've developed a website were signed in users can search, add, edit and delete local club events.
 
 ### What can a user do?
 
-- 
+-   Auth: Signup & Login
+-   Passport.js Auth: Signup & Login via Github account
+-   Create, edit, and remove your event listings
+-   Mapbox.js: View the mapped location of the event 
+-   Filter events by date and search keywords. 
+
 
 ## Built with
 
--  
+-   HMTL/CSS
+-   Javascript
+-   Node.js
+-   Mongoose
+-   Express
+-   MongoDB
+-   Passport.js
+-   Mapbox.js
+-   Handlebars.js
+-   bcrypt.js
+-   axios
 
 
 ## Getting Started
+
+-   This project has a server (root dir) and a client (client dir). 
+-   For local dev, run these commands in each of them.
 
 ```Console
 npm install
@@ -30,6 +49,7 @@ npm install
 npm start
 ```
 
+Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deployed version</a>
 
 ## Screenshots
 
