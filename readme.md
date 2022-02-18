@@ -11,7 +11,7 @@ This is a fullstack web app.
 
 ### The idea
 
-On a team of three people including myself, we've developed a website were signed in users can search, add, edit and delete local club events.
+On a team of three people including myself, we've developed a website in 5 days where signed in users can search, add, edit and delete local club events.
 
 ### What can a user do?
 
@@ -55,17 +55,17 @@ Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deploy
 
 **coming soon**
 
-<!-- ![Landing](https://user-images.githubusercontent.com/73913997/152535705-47c39268-b749-45f9-8ca6-30c521e851cc.png)
+<!-- ![Landing](https://user-images.githubusercontent.com/73913997/154705622-ca78b2a0-d50b-4dbf-a456-4998989abdb9.png)
 
 -----
 
-![Products](https://user-images.githubusercontent.com/73913997/152535838-78796b7c-c9d2-43c7-8fc7-dace3319989a.png)
+![Events](https://user-images.githubusercontent.com/73913997/154705650-b9719d9f-ed35-482f-81dd-85d5446bbf98.png)
 
 -----
 
-![Checkout](https://user-images.githubusercontent.com/73913997/152536410-53f8fa95-62ca-4a77-9fcf-9b33731d5fc7.png)
+![Eventdetails](https://user-images.githubusercontent.com/73913997/154705680-d452c5cc-e2a1-4aba-be88-955b5791c4af.png)
 
 -----
 
-![Profile](https://user-images.githubusercontent.com/73913997/152535882-8f9b7c0c-955a-4de3-9552-636de7631113.png) -->
+![Profile](https://user-images.githubusercontent.com/73913997/154705703-4d383989-d09b-481c-b75b-ae8a6f15cda2.png) -->
 
