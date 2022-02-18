@@ -55,7 +55,7 @@ Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deploy
 
 **coming soon**
 
-<!-- ![Landing](https://user-images.githubusercontent.com/73913997/154705622-ca78b2a0-d50b-4dbf-a456-4998989abdb9.png)
+![Landing](https://user-images.githubusercontent.com/73913997/154705622-ca78b2a0-d50b-4dbf-a456-4998989abdb9.png)
 
 -----
 
@@ -67,5 +67,5 @@ Alternatively, you can view the <a href="https://club-kid.herokuapp.com/">deploy
 
 -----
 
-![Profile](https://user-images.githubusercontent.com/73913997/154705703-4d383989-d09b-481c-b75b-ae8a6f15cda2.png) -->
+![Profile](https://user-images.githubusercontent.com/73913997/154705703-4d383989-d09b-481c-b75b-ae8a6f15cda2.png)
 
